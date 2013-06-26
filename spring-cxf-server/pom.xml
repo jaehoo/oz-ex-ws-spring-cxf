@@ -101,6 +101,16 @@
                 </plugin>
 
 
+               <!-- &lt;!&ndash; pom.xml, the build/plugins section &ndash;&gt;
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <configuration>
+                        <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                    </configuration>
+                </plugin>-->
+
+
             </plugins>
 
         </pluginManagement>
@@ -143,7 +153,8 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.9</version>
+            <version>4.10</version>
+            <scope>test</scope>
         </dependency>
 
 

@@ -12,7 +12,7 @@ public class AppTest
         extends TestCase
 {
 
-    private static final Logger logger = Logger.getRootLogger();
+    private static final Logger logger = Logger.getLogger(AppTest.class);
 
     /**
      * Create the test case

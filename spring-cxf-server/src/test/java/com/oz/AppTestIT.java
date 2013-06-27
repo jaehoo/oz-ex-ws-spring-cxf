@@ -1,6 +1,8 @@
 package com.oz;
 
 //import junit.framework.Test;
+
+import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.apache.log4j.Logger;
@@ -24,13 +26,13 @@ public class AppTestIT
         super( testName );
     }
 
-//    /**
-//     * @return the suite of tests being tested
-//     */
-//    public static Test suite()
-//    {
-//        return new TestSuite( AppTestIT.class );
-//    }
+    /**
+     * @return the suite of tests being tested
+     */
+    public static Test suite()
+    {
+        return new TestSuite( AppTestIT.class );
+    }
 
     /**
      * Rigourous Test :-)

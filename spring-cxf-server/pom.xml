@@ -25,12 +25,16 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.0.3.v20130506</version>
+                <version>9.0.3.v20130506</version>             <!--required java 1.7 -->
+
 
                 <configuration>
                     <webApp>
                         <contextPath>/spring-cxf-server</contextPath>
                     </webApp>
+
+                    <stopPort>9966</stopPort>
+                    <stopKey>foo</stopKey>
                 </configuration>
 
                 <executions>
@@ -82,9 +86,9 @@
                             <manifestEntries>
                                 <Implementation-Version>${project.version}
                                 </Implementation-Version>
-                                <Implementation-Title>${artifactId}</Implementation-Title>
-                                <Extension-Name>${artifactId}</Extension-Name>
-                                <Built-By>Daniel Medina - danielme.com</Built-By>
+                                <!--<Implementation-Title>${artifactId}</Implementation-Title>
+                                <Extension-Name>${artifactId}</Extension-Name>-->
+                                <Built-By>Jaehoo</Built-By>
                             </manifestEntries>
                         </archive>
                     </configuration>
@@ -101,14 +105,82 @@
                 </plugin>
 
 
-               <!-- &lt;!&ndash; pom.xml, the build/plugins section &ndash;&gt;
+                <!--    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.8.1</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.apache.maven.surefire</groupId>
+                                <artifactId>surefire-junit4</artifactId>
+                                <version>2.10</version>
+                            </dependency>
+                        </dependencies>
+
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*.class</include>
+                            </includes>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.10</version>
                     <configuration>
-                        <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                        <excludes>
+                            <exclude>**/*IT.java</exclude>
+                        </excludes>
                     </configuration>
-                </plugin>-->
+                </plugin>
+
+
+
+                <plugin>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>2.8.1</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>**/*IT.java</exclude>
+                        </excludes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+
+
+
+
+
+
+
+
+
+                <!-- &lt;!&ndash; pom.xml, the build/plugins section &ndash;&gt;
+                 <plugin>
+                     <groupId>org.apache.maven.plugins</groupId>
+                     <artifactId>maven-failsafe-plugin</artifactId>
+                     <configuration>
+                         <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                     </configuration>
+                 </plugin>-->
 
 
             </plugins>
@@ -156,7 +228,6 @@
             <version>4.10</version>
             <scope>test</scope>
         </dependency>
-
 
 
     </dependencies>
